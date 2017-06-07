@@ -1,0 +1,183 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+Положим следующую систему уравнений:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{cases}
+\dot{\theta}_{1}(t)=w_{1}+\frac{k}{2}\sin(\theta_{2}(t)-\theta_{1}(t))\\
+\dot{\theta}_{2}(t)=w_{2}+\frac{k}{2}\sin(\theta_{1}(t)-\theta_{2}(t))
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+где 
+\begin_inset Formula $w_{1}-w_{2}=2\Delta w=const$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{cases}
+\dot{\theta}_{1}(t)+\dot{\theta}_{2}(t)=2\Omega+\\
+\dot{\theta}(t)=\dot{\theta}_{1}(t)-\dot{\theta}_{2}(t)=2\Delta w-k\sin(\theta_{1}(t)-\theta_{2}(t))=2\Delta w-k\sin\theta(t)
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Реализуем процесс восстановления параметров системы (
+\begin_inset Formula $k(t)$
+\end_inset
+
+) как предложено, т.е.
+ выразим из последнего уравнения:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+k(t)=\frac{2\Delta w-\dot{\theta}_{0}(t)}{\sin\theta_{0}(t)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Теперь положим
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\phi_{0}(t)=\pm\arccos C_{0}(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Пересчитаем:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{k}(t)=\pm\frac{2\Delta w\pm(\arccos C_{0}(t))'}{\sin\arccos C_{0}(t)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Предложенное условие медленного изменения:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+|\left(\arccos C_{0}(t)\right)'|^{2}<4\Delta w^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+С полученными параметрами можно6 решать систему.
+\end_layout
+
+\end_body
+\end_document
