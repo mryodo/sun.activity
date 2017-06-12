@@ -1,4 +1,4 @@
-N_grid=2000;
+N_grid=4000;
 
 periods=5;
 L=periods*pi;
@@ -12,10 +12,11 @@ t=linspace(0, L, N_grid);
 t_interp=linspace(0, L, N_grid);
 h=t(2)-t(1);
 
+p=round(T/h)
 
 k0=0.25*ones(1, N_grid);
-for i=600:700
-    k0(i)=0.7;
+for i=3*p:N_grid-p
+    k0(i)=0.3;
 end
 
 init=asin(2*dw/k0(1));
@@ -45,10 +46,10 @@ end
 
 phi0=acos(C0);
 
-figure;
-hold on;
-plot(t, theta);
-plot(t, phi0);
+%figure;
+%hold on;
+%plot(t, theta);
+%plot(t, phi0);
 
 k_hat=2*dw*ones(1, N_grid)./sin(phi0);
 
