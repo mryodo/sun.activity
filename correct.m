@@ -1,8 +1,11 @@
-N_grid=1000;
-L=5*pi;
+N_grid=2000;
 
-W=pi;
+periods=5;
+L=periods*pi;
+W=2*pi;
+
 dw=0.1;
+T=2*pi/W;
 
 
 t=linspace(0, L, N_grid);
@@ -11,7 +14,7 @@ h=t(2)-t(1);
 
 
 k0=0.25*ones(1, N_grid);
-for i=300:350
+for i=600:700
     k0(i)=0.7;
 end
 
@@ -21,19 +24,39 @@ init=asin(2*dw/k0(1));
 x0=sin(W*t);
 y0=sin(W*t+theta');
 
-figure;
-hold on;
-grid on;
-plot(t, x0);
-plot(t, y0);
+%figure;
+%hold on;
+%grid on;
+%plot(t, x0);
+%plot(t, y0);
+
+th=round(T/(2*h));
+
+C0=zeros(N_grid, 1);
+for i=1:N_grid
+   if ((t(i)-T/2>=0) &  (t(i)+T/2<=L))
+       D1=x0(i-th:i+th);
+       D2=y0(i-th:i+th);
+       C0(i)=corr(D1',D2');
+   else
+       C0(i)=NaN;
+   end
+end
+
+phi0=acos(C0);
 
 figure;
 hold on;
 plot(t, theta);
+plot(t, phi0);
+
+k_hat=2*dw*ones(1, N_grid)./sin(phi0);
+
+
+figure;
+hold on;
 plot(t, k0);
-
-
-
+plot(t, k_hat);
 
 
 
