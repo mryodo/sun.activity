@@ -1,12 +1,14 @@
 N_grid=4000;
 
 periods=5;
-L=periods*pi;
+
 W=2*pi;
 
-dw=0.1;
+
+dw=1;
 T=2*pi/W;
 
+L=periods*T;
 
 t=linspace(0, L, N_grid);
 t_interp=linspace(0, L, N_grid);
@@ -14,19 +16,19 @@ h=t(2)-t(1);
 
 p=round(T/h);
 
-jump_k=zeros(1, N_grid-3*p);
-jump_phi=zeros(1, N_grid-3*p);
+jump_k=zeros(1, p/2);
+jump_phi=zeros(1, N_grid-2*p);
 
-jump_Rk=zeros(1, N_grid-3*p);
-jump_Rk0=zeros(1, N_grid-3*p);
+jump_Rk=zeros(1, N_grid-2*p);
+jump_Rk0=zeros(1, N_grid-2*p);
 
-jump_Rphi=zeros(1, N_grid-3*p);
-jump_Rphi0=zeros(1, N_grid-3*p);
+jump_Rphi=zeros(1, N_grid-2*p);
+jump_Rphi0=zeros(1, N_grid-2*p);
 
 
-for i=1:N_grid-3*p
+for i=1:2:p
     k0=0.25*ones(1, N_grid);
-    for j=3*p:3*p+i
+    for j=2*p:2*p+i
         k0(j)=0.5;
     end
 
@@ -65,7 +67,7 @@ for i=1:N_grid-3*p
         end
     end
 
-    jump_k(i)=abs((max(k_hat(i+3*p:finish)-k0(i+3*p:finish)))/0.25);
+    jump_k(i)=abs((k_hat(i+2*p)-0.25)/0.25);
     jump_phi(i)=abs((max(phi0(i+3*p:finish)-theta(i+3*p:finish)))/0.25);
 
     jump_Rk(i)=sqrt(h/L*sum((k_hat(start:finish)-k0(start:finish)).*(k_hat(start:finish)-k0(start:finish))));
@@ -76,12 +78,14 @@ for i=1:N_grid-3*p
 
 end
 
-dlmwrite('jump_k_2.txt', jump_k);
-dlmwrite('jump_phi_2.txt', jump_phi);
-dlmwrite('jump_Rk_2.txt', jump_Rk);
-dlmwrite('jump_Rk0_2.txt', jump_Rk0);
-dlmwrite('jump_Rphi_2.txt', jump_Rphi);
-dlmwrite('jump_Rphi0_2.txt', jump_Rphi0);
+plot(jump_k);
+
+%dlmwrite('jump_k_2.txt', jump_k);
+%dlmwrite('jump_phi_2.txt', jump_phi);
+%dlmwrite('jump_Rk_2.txt', jump_Rk);
+%dlmwrite('jump_Rk0_2.txt', jump_Rk0);
+%dlmwrite('jump_Rphi_2.txt', jump_Rphi);
+%dlmwrite('jump_Rphi0_2.txt', jump_Rphi0);
 
 function dydt = myode(t,y,t_interp, k,dw)
     k = interp1(t_interp,k,t);
