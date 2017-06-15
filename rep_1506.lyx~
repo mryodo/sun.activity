@@ -1,0 +1,1511 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language russian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 4cm
+\topmargin 3.2cm
+\rightmargin 4cm
+\bottommargin 3.2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Восстановление параметров модели Курамото
+\end_layout
+
+\begin_layout Standard
+Для начала зададим некоторый набор переменных: частоту 
+\begin_inset Formula $\Omega=2\pi$
+\end_inset
+
+ и их разницу 
+\begin_inset Formula $\Delta\omega=0.1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Тогда период 
+\begin_inset Formula $T=\frac{2\pi}{\Omega}=1$
+\end_inset
+
+.
+ Общее время исследования положим 
+\begin_inset Formula $L=nT$
+\end_inset
+
+, где переменная 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ есть количество периодов в изучаемом отрезке времени.
+ Положим 
+\begin_inset Formula $n=5$
+\end_inset
+
+ для проверки работы процесса восстановления.
+\end_layout
+
+\begin_layout Standard
+Наиболее болезненным является вопрос сетки: положим на ней отрезок 
+\begin_inset Formula $[0;L]$
+\end_inset
+
+ с 
+\begin_inset Formula $N_{grid}$
+\end_inset
+
+ точек, полученный шаг сетки обозначим 
+\begin_inset Formula $h$
+\end_inset
+
+, 
+\begin_inset Formula $h=\frac{L}{N_{grid}+1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Зададим функцию 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+ — первое приближение параметров системы.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+k_{0}(t)=\begin{cases}
+d,\quad0\le t\le2T\;\wedge\; t\ge2T+\tau\\
+d+\Delta d,\quad0\le t\le2T+\tau
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Здесь 
+\begin_inset Formula $d$
+\end_inset
+
+ положим невозмущенным значением; 
+\begin_inset Formula $\Delta d$
+\end_inset
+
+ - амплитудой шока; 
+\begin_inset Formula $\tau$
+\end_inset
+
+ - длительностью шока.
+\end_layout
+
+\begin_layout Standard
+Для программного задания ведем дополнительный параметр: количество точек
+ на период 
+\begin_inset Formula $p=\frac{T}{h}$
+\end_inset
+
+; аналогично 
+\begin_inset Formula $s$
+\end_inset
+
+ - для длины шока, 
+\begin_inset Formula $s\cdot h=\tau$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename k0_try.png
+	width 80col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+График исследуемой функции 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+ на за время 
+\begin_inset Formula $L=5T$
+\end_inset
+
+ c шоком 
+\begin_inset Formula $\Delta d=d$
+\end_inset
+
+ длительностью 
+\begin_inset Formula $\tau=T/2$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Решим уравнение
+\begin_inset Formula 
+\begin{align}
+\dot{\theta} & =2\Delta w-\kappa_{0}(t)\sin\theta\label{eq:dif}\\
+\theta(0) & =init\nonumber 
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+где начальное значение 
+\begin_inset Formula $init$
+\end_inset
+
+ выберем образом, который будет описан чуть ниже.
+ Для решения данного уравнения применим метод Рунге-Кутты 4-5 порядка
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+имеющиеся в программных средах Matlab и Python реализации данного метода
+ выдавали сомнительные результаты, поэтому метод было решено реализовать
+ самостоятельно следующим образом (для уравнения 
+\begin_inset Formula $\dot{x}=f(x,t)$
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\begin{align}x_{0}= & init\\
+x_{i+1}= & x_{i}+\frac{k_{1}+2k_{2}+2k_{3}+k_{4}}{6}
+\end{align}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+где
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\begin{align}k_{1}= & f(t_{i},x_{i})h\\
+k_{2}= & f(t_{i}+h/2,x_{i}+k_{1}/2)h\\
+k_{3}= & f(t_{i}+h/2,x_{i}+k_{2}/2)h\\
+k_{4}= & f(t_{i}+h,x_{i}+k_{3})h
+\end{align}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+В случае нашего уравнения 
+\begin_inset Formula $f=2\Delta w-k_{0}(t)\sin\theta$
+\end_inset
+
+.
+ Как можно видеть, метод оперирует с полуцелыми точками сетки; в рамках
+ текущей работы проблемы была решена интерполяцией массива 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+ на полуцелые точки сетки; в ситуации параметров, где качество интерполяции
+ создает существенную погрешность (например, если они зашумлены), начальная
+ сетка по времени, т.е.
+ величина 
+\begin_inset Formula $N_{grid}$
+\end_inset
+
+ должна быть выбрана вдвое меньше, чем реальная сетка на параметры, чтобы
+ обойти недостатки, создаваемые интерполяцией.
+\end_layout
+
+\end_inset
+
+ .
+ Решение уравнения обозначим как 
+\begin_inset Formula $\theta(t)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename theta_try.png
+	width 80col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Решение уравнения (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:dif"
+
+\end_inset
+
+) при 
+\begin_inset Formula $T=1$
+\end_inset
+
+, 
+\begin_inset Formula $n=5$
+\end_inset
+
+, 
+\begin_inset Formula $\Delta w=0.1$
+\end_inset
+
+, 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+ выбранному с 
+\begin_inset Formula $d=\Delta d=0.25$
+\end_inset
+
+, 
+\begin_inset Formula $\tau=T/2$
+\end_inset
+
+; начальное условие 
+\begin_inset Formula $init$
+\end_inset
+
+ выбрано согласованным с стационарным случаем.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Для восстановления введем два 
+\begin_inset Quotes eld
+\end_inset
+
+виртуальных маятника
+\begin_inset Quotes erd
+\end_inset
+
+ с фазовой разницей 
+\begin_inset Formula $\theta(t)$
+\end_inset
+
+, т.е.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{cases}
+x_{o}(t)=\sin(\Omega t)\\
+y_{0}(t)=\sin(\Omega t+\theta(t))
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename x0y0_try.png
+	width 80col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Виртуальные маятники для найденной фазовой разницы 
+\begin_inset Formula $\theta(t)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Для них посчитаем скользящую корреляцию 
+\begin_inset Formula $C_{0}(t)$
+\end_inset
+
+ по следующей формуле:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{0}(t)=\frac{\int_{t-T/2}^{t+T/2}\sin(\Omega\tau)\sin(\Omega\tau+\theta_{0}(\tau))d\tau}{\sqrt{\int_{t-T/2}^{t+T/2}\sin^{2}(\Omega\tau)d\tau\cdot\int_{t-T/2}^{t+T/2}\sin^{2}(\Omega\tau+\theta_{0}(\tau))d\tau}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\emph on
+Важно
+\series default
+\emph default
+: приведенный метод вычисления 
+\begin_inset Formula $C_{0}(t)$
+\end_inset
+
+ исходит обращается к значениям функции 
+\begin_inset Formula $\theta(t)$
+\end_inset
+
+ при 
+\begin_inset Formula $t<0$
+\end_inset
+
+ и 
+\begin_inset Formula $t>L$
+\end_inset
+
+ (согласно пределам интегрирования), если пытаться посчитать корреляцию
+ 
+\begin_inset Formula $C_{0}(t)$
+\end_inset
+
+ на всем отрезке времени 
+\begin_inset Formula $[0;L]$
+\end_inset
+
+.
+ Формально говоря, можно достроить необходимые участки решения 
+\begin_inset Formula $\theta(t)$
+\end_inset
+
+, правильно выбирая начальные значения; в то же время, мы заведомо выбираем
+ достаточное 
+\begin_inset Formula $n$
+\end_inset
+
+ — число периодов — чтобы все существенные особенности (т.е.
+ реакция на шок) были видны, поэтому в текущей работе 
+\begin_inset Formula $C_{0}(t)$
+\end_inset
+
+ вычисленна на доступной ей интервале 
+\begin_inset Formula $\left[\frac{T}{2};L-\frac{T}{2}\right]$
+\end_inset
+
+ без дополнительных построений решений дифференциального уравнения (при
+ желании, их можно добавить).
+\end_layout
+
+\begin_layout Standard
+Теперь воспользуемся предположением о квазистационарности решения: если
+ фазовая разница между маятниками (обозначим ее 
+\begin_inset Formula $\varphi_{0}$
+\end_inset
+
+) постоянна по времени, то 
+\begin_inset Formula $C_{0}(t)=\cos\varphi_{0}$
+\end_inset
+
+.
+ Отсюда получаем, что:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\varphi_{0}(t)=\arccos C_{0}(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+С другой стороны, по построению маятников известно, что фазовая разница
+ (непостоянная) есть 
+\begin_inset Formula $\theta(t)$
+\end_inset
+
+.
+ Соответственно, если восстановление было удачным, получившиеся функции
+ должны быть относительно похожими (здесь мы намеренно не обсуждаем вопрос
+ о метриках, который будет освещен ниже при разговоре о качестве восстановленных
+ параметров).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename phi_try.png
+	width 80col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Сравнение функций 
+\begin_inset Formula $\theta(t)$
+\end_inset
+
+ — решения изначального уравнения с нулевым приближением параметров и 
+\begin_inset Formula $\varphi_{0}(t)$
+\end_inset
+
+ — полученной по нему при помощи виртуальных маятников фазовой разницы.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\emph on
+Важно
+\series default
+\emph default
+: теперь обратимся к вопросу о начальном условии для дифференциального уравнения
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:dif"
+
+\end_inset
+
+).
+ Потребуем, чтобы хотя бы в начальный момент времени процедура восстановления
+ была бы корректной, т.е.
+ в момент времени 
+\begin_inset Formula $t=0$
+\end_inset
+
+ решение стационарно, т.е.
+ 
+\begin_inset Formula $\dot{\theta}=0$
+\end_inset
+
+, т.е.
+\begin_inset Formula 
+\[
+0=2\Delta w-k_{0}(0)\sin\theta(0),
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+откуда 
+\begin_inset Formula 
+\[
+init=\theta(0)=\arcsin\frac{2\Delta w}{k_{0}(0)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Вообще говоря, подобное выражение выглядит сомнительным: из него немедленно
+ следует условие 
+\begin_inset Formula 
+\[
+\left|\frac{2\Delta w}{k_{0}(0)}\right|\le1,
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+что накладывает существенные ограничения на пространство возможных параметров
+ маятников; с другой стороны, возникает надежда, что существует некоторое
+ физическое объяснение, почему подобное неравенство всегда выполняется.
+\end_layout
+
+\begin_layout Standard
+Выразим параметр-функцию:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{\theta}=2\Delta w-k(t)\sin\theta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+k(t)=\frac{2\Delta w-\dot{\theta}}{\sin\theta}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Подставляя найденное 
+\begin_inset Formula $\theta\approx\varphi_{0}$
+\end_inset
+
+, для котрого 
+\begin_inset Formula $\dot{\varphi}_{0}=0$
+\end_inset
+
+, получаем новую параметр-функцию:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{k}(t)=\frac{2\Delta w}{\sin\varphi_{0}(t)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename khat_try.png
+	width 80col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Итог реконструкции: графики параметров 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+ и восстановленное 
+\begin_inset Formula $\hat{k}(t)$
+\end_inset
+
+.
+ Заметим, что стаблизация к безшоковому состоянию не произошла, поэтому
+ для дальнейших исследований число периодов 
+\begin_inset Formula $n$
+\end_inset
+
+ было увеличено.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Качество восстановления.
+\end_layout
+
+\begin_layout Standard
+Вопрос о том, насколько качественно проведена была реконструкция, напрямую
+ зависит от метрики, относительно которой мы рассматриваем близость функций.
+ По большому счету, это построение важнее для следующей части данного отчета,
+ поэтому здесь мы просто сформулируем тот набор статистик, который мы собираем
+ с полученных функций.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $jumpK$
+\end_inset
+
+ — отклонение восстановленной функции 
+\begin_inset Formula $\hat{k}(t)$
+\end_inset
+
+ на выходе из шока относительно ампилтуды шока, т.е.
+\begin_inset Formula 
+\[
+jumpK=\frac{\hat{k}(2T+\tau)-d}{\Delta d}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $jumpKC$
+\end_inset
+
+ — аналог С–метрики на отрезке времени после шока; формально это поправка
+ на то, что наибольшее отклонение от 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+ функция 
+\begin_inset Formula $\hat{k}(t)$
+\end_inset
+
+ может реализовывать не на выходе из шока, а несколько позже:
+\begin_inset Formula 
+\[
+jumpKC=\frac{1}{\Delta d}\left(\max\limits _{t\ge2T+\tau}\hat{k}(t)-d\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $jumpKR$
+\end_inset
+
+ — обычная 
+\begin_inset Formula $\mathbb{L}_{2}$
+\end_inset
+
+–метрика на функции, за исключением того, что мы нормируем ее на длину изучаемог
+о времени:
+\begin_inset Formula 
+\[
+jumpKR=\frac{1}{L}\sqrt{\int\limits _{0}^{L}\left(\hat{k}(\tau)-k_{0}(\tau\right)^{2}d\tau}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $jumpKR0$
+\end_inset
+
+ — модифицированная предыдущая метрика, которая учитывает дисперсность 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+ (полагаю, что сильно зашумленные функции она бы спасла):
+\begin_inset Formula 
+\[
+jumpKR0=\frac{\frac{1}{L}\sqrt{\int\limits _{0}^{L}\left(\hat{k}(\tau)-k_{0}(\tau\right)^{2}d\tau}}{\sigma(k_{0}(t))}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Зависимость качества восстановления (
+\begin_inset Formula $jumpK$
+\end_inset
+
+, 
+\begin_inset Formula $jumpKC$
+\end_inset
+
+, 
+\begin_inset Formula $jumpKR$
+\end_inset
+
+, 
+\begin_inset Formula $jumpKR0$
+\end_inset
+
+) от длительности шока (
+\begin_inset Formula $\tau/T$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+По большому счету, вся техническая работа по введению параметров и описанию
+ модели, в рамках которой мы проводим такое исследование, была проведена
+ выше, но давайте аккуратно соберем все численные параметры.
+\end_layout
+
+\begin_layout Standard
+Итак, в рамках нашей модели мы исследуем качество восстановления в четырех
+ приведенных выше метриках относительно длительности шока нулевого приближения
+ параметров 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+, нормированной на период маятников, т.е.
+ 
+\begin_inset Formula $\tau/T$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Для вычислений было выбрано: 
+\begin_inset Formula $\Omega=2\pi$
+\end_inset
+
+, 
+\begin_inset Formula $\Delta w=0.1$
+\end_inset
+
+, 
+\begin_inset Formula $T=1$
+\end_inset
+
+, 
+\begin_inset Formula $n=10$
+\end_inset
+
+ (исходя из эксперимента выше, чтобы была некоторая стабилизация к дошоковому
+ состоянию), 
+\begin_inset Formula $L=nT$
+\end_inset
+
+; невозмущенное значение параметра 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+ было выбрано 
+\begin_inset Formula $d=0.25$
+\end_inset
+
+, амплитуда шока 
+\begin_inset Formula $\Delta d=0.25$
+\end_inset
+
+, начало шока — момент времени 
+\begin_inset Formula $2T$
+\end_inset
+
+ (из-за необходимости 
+\begin_inset Quotes fld
+\end_inset
+
+отступить
+\begin_inset Quotes frd
+\end_inset
+
+ от 
+\begin_inset Formula $0$
+\end_inset
+
+ хотя бы на 
+\begin_inset Formula $T/2$
+\end_inset
+
+, чтобы получить 
+\begin_inset Formula $C_{0}(t)$
+\end_inset
+
+, кажется разумным оставить 
+\begin_inset Quotes fld
+\end_inset
+
+задел
+\begin_inset Quotes frd
+\end_inset
+
+ для системы, чтобы она пробыла в невозмущенном состоянии какое-то время).
+\end_layout
+
+\begin_layout Standard
+Приведем результаты на графиках:
+\end_layout
+
+\begin_layout Enumerate
+Графики 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:k"
+
+\end_inset
+
+ и 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:kc"
+
+\end_inset
+
+ при первом взгляде не содержат существенных отличий, что подтверждает гипотезу
+ о том, что максимальная амплитуда отклонения достигается на выходе из шока;
+ однако совместные графики 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:kkc2"
+
+\end_inset
+
+ и 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:kkc10"
+
+\end_inset
+
+ ниже показывают, что подобное совпадение наблюдается только при длительных
+ возмущениях (рис.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:kkc10"
+
+\end_inset
+
+); при коротких возмущениях система достигает наибольшего отклонения уже
+ после шока (рис.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:kkc2"
+
+\end_inset
+
+).
+ 
+\emph on
+Возможно, интересным было насколько позже?
+\emph default
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename jumpK.png
+	width 50col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Сравнение в метрике
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:k"
+
+\end_inset
+
+ 
+\begin_inset Formula $jumpK$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename jumpKC.png
+	width 50col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Сравнение в мет
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:kc"
+
+\end_inset
+
+рике 
+\begin_inset Formula $jumpKC$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Амплитуда отклонения после шока
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename kkc2.png
+	width 50col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+При длительности шока, меньшей 
+\begin_inset Formula $2T$
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:kkc2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename kkc10.png
+	width 50col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:kkc10"
+
+\end_inset
+
+На все отрезке времени
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Сравнение результатов 
+\begin_inset Formula $jumpK$
+\end_inset
+
+ и 
+\begin_inset Formula $jumpKC$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Обращает на себя внимание появление, затухание и более акцентированное появление
+ колебаний на графиках 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:k"
+
+\end_inset
+
+ и 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:kc"
+
+\end_inset
+
+: если первый (по времени) период колебаний может являться следствием того,
+ что система, испытавшая кратковременный по сравнению со своим периодом
+ шок, условно 
+\begin_inset Quotes fld
+\end_inset
+
+еще не привыкла
+\begin_inset Quotes frd
+\end_inset
+
+ к возмущению, вследствие чего возникает данная картинка; то второй (по
+ времени) период колебаний вероятно связан с отсутствием значительной стабилизац
+ии параметров после шока (поскольку в невозмущенном состоянии после шока
+ 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+ находится сравнительно малый отрезок времени).
+ 
+\emph on
+Впрочем, ясно, что это довольно сомнительные объяснения\SpecialChar ldots
+
+\end_layout
+
+\begin_layout Enumerate
+Также необходимо заметить, что графики 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:kr"
+
+\end_inset
+
+ и 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:kr0"
+
+\end_inset
+
+ дают принципиально разный ответ на вопрос о качестве восстановленной параметр-ф
+ункции: график 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:kr"
+
+\end_inset
+
+ дает значение ошибки не больше 
+\begin_inset Formula $0.042$
+\end_inset
+
+, а график 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:kr0"
+
+\end_inset
+
+ — никак не меньше 
+\begin_inset Formula $0.315$
+\end_inset
+
+.
+ 
+\emph on
+Кажется, 
+\begin_inset Formula $0.315$
+\end_inset
+
+ — это же чудовищно много\SpecialChar ldots
+
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename jumpKR.png
+	width 50col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Сравнение в мет
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:kr"
+
+\end_inset
+
+рике 
+\begin_inset Formula $jumpKR$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename jumpKR0.png
+	width 50col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Сравн
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:kr0"
+
+\end_inset
+
+ение в метрике 
+\begin_inset Formula $jumpKR0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Качество восстановления
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Отметим еще одну особенность: оба графика 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:kr"
+
+\end_inset
+
+ и 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:kr0"
+
+\end_inset
+
+ показывают, что у ошибки есть максимум (
+\emph on
+отдельная прекрасная особенность, что они у них не совпадают, а жаль
+\emph default
+;
+\emph on
+ видимо, метрики все-таки очень разные
+\emph default
+); то есть в некотором смысле можно говорить о том, что существует некий
+ порог длительности шока (соответствующий максимуму на одном из графиков),
+ после которого система 
+\begin_inset Quotes fld
+\end_inset
+
+привыкает
+\begin_inset Quotes frd
+\end_inset
+
+ к возмущенному состоянию и пытается стабилизироваться уже вокруг него.
+ Вероятно, здесь имеет смысл увеличить общее время исследования, чтобы исключить
+ вероятность того, что это вызвано просто концом области интегрирования
+ дифференциального уравнения.
+\end_layout
+
+\end_body
+\end_document

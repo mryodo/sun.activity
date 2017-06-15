@@ -1,0 +1,184 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Восстановление параметров модели Курамото
+\end_layout
+
+\begin_layout Standard
+Для начала зададим некоторый набор переменных: частоту 
+\begin_inset Formula $\Omega=2\pi$
+\end_inset
+
+, 
+\begin_inset Formula $\Delta\omega=0.1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Тогда период 
+\begin_inset Formula $T=\frac{2\pi}{\Omega}=1$
+\end_inset
+
+.
+ Общее время исследования положим 
+\begin_inset Formula $L=nT$
+\end_inset
+
+, где переменная 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ есть количество периодов в изучаемом отрезке времени.
+ Положим 
+\begin_inset Formula $n=5$
+\end_inset
+
+ для проверки работы процесса восстановления.
+\end_layout
+
+\begin_layout Standard
+Наиболее болезненным является вопрос сетки: положим на ней отрезок 
+\begin_inset Formula $[0;L]$
+\end_inset
+
+ с 
+\begin_inset Formula $N_{grid}$
+\end_inset
+
+ точек, полученный шаг сетки обозначим 
+\begin_inset Formula $h$
+\end_inset
+
+, 
+\begin_inset Formula $h=\frac{L}{N_{grid}+1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Зададим функцию 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+ — первое приближение параметров системы.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $k_{0}(t)=\begin{cases}
+d,\quad0\le t\le2T\text{ или }t\ge2T+\tau\\
+d+\Delta d,\quad0\le t\le2T+\tau
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Здесь 
+\begin_inset Formula $d$
+\end_inset
+
+ положим невозмущенным значением; 
+\begin_inset Formula $\Delta d$
+\end_inset
+
+ - амплитудой шока; 
+\begin_inset Formula $\tau$
+\end_inset
+
+ - длительностью шока.
+\end_layout
+
+\begin_layout Standard
+Для программного задания ведем дополнительный параметр: количество точек
+ на период 
+\begin_inset Formula $p=\frac{T}{h}$
+\end_inset
+
+; аналогично 
+\begin_inset Formula $s$
+\end_inset
+
+ - для длины шока, 
+\begin_inset Formula $s\cdot h=\tau$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document
