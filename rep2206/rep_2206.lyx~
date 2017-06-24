@@ -1,0 +1,2293 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{multicol}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language russian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 3cm
+\rightmargin 3cm
+\bottommargin 3cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Отчет о текущем прогрессе в изучении процесса восстановления параметров
+ модели Курамото
+\end_layout
+
+\begin_layout Abstract
+В настоящем отчете попытаемся ответить на вопросы, которые возникли в предыдущем
+ отчете, в следующем порядке: восстанавливаются ли параметры к постшоковому
+ значению через значительные промежутки времени (на малых промежутках времени
+ в прошлом отчете была приведена картинка, по которой неясно, так ли это);
+ правда ли, что найденные максимумы и флуктуации различных метрик при длительных
+ шоках есть следствия близости конца отрезка интегрирования; как выглядит
+ аналогичный набор картинок для отрицательных шоков, в процессе которых
+ нарушается основное Курамото-неравенство (приведено исследование на двух
+ разных отрезках интегрирования).
+\end_layout
+
+\begin_layout Abstract
+Части отчета выглядят следующим образом: в первой части помещены все используемы
+е обозначения (они в точности повторяют предыдущие, но разумнее держать
+ их в одном файле); последующие части содержат ответы на вопросы выше с
+ указанием значений используемых параметров.
+ Возникающие в процессе работы вопросы отмечены, как и раньше, курсивом.
+\end_layout
+
+\begin_layout Section
+Напоминание: параметры и обозначения
+\end_layout
+
+\begin_layout Standard
+Зададим набор используемых переменных и функций:
+\end_layout
+
+\begin_layout Itemize
+частоту 
+\begin_inset Formula $\Omega=2\pi$
+\end_inset
+
+ и их разницу 
+\begin_inset Formula $\Delta\omega=0.1$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+период 
+\begin_inset Formula $T=\frac{2\pi}{\Omega}=1$
+\end_inset
+
+; 
+\end_layout
+
+\begin_layout Itemize
+общее время исследования положим 
+\begin_inset Formula $L=nT$
+\end_inset
+
+, где переменная 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ есть количество периодов в изучаемом отрезке времени; 
+\end_layout
+
+\begin_layout Itemize
+функция 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+ — первое приближение параметров системы:
+\begin_inset Formula 
+\[
+k_{0}(t)=\begin{cases}
+d,\quad0\le t\le2T\;\wedge\;t\ge2T+\tau\\
+d+\Delta d,\quad0\le t\le2T+\tau
+\end{cases}
+\]
+
+\end_inset
+
+Здесь 
+\begin_inset Formula $d$
+\end_inset
+
+ положим невозмущенным значением; 
+\begin_inset Formula $\Delta d$
+\end_inset
+
+ - амплитудой шока; 
+\begin_inset Formula $\tau$
+\end_inset
+
+ - длительностью шока;
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../rep1506/k0_try.png
+	width 70col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+График исследуемой функции 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+ на за время 
+\begin_inset Formula $L=5T$
+\end_inset
+
+ c шоком 
+\begin_inset Formula $\Delta d=d$
+\end_inset
+
+ длительностью 
+\begin_inset Formula $\tau=T/2$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+результат работы процесса восстановления при помощи квазистационарного решения,
+ который мы описали в предыдущем отчете, обозначим 
+\begin_inset Formula $\hat{k}(t)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Также в рамках работы мы будем ссылаться на 
+\series bold
+основное Курамото-неравенство
+\series default
+: 
+\begin_inset Formula 
+\begin{equation}
+\left|\frac{2\Delta w}{k_{0}(t)}\right|\le1,\label{eq:main}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+причем будем считать, что в момент времени 
+\begin_inset Formula $t=0$
+\end_inset
+
+ неравенство выполняется (однако может нарушаться во время шока.
+\end_layout
+
+\begin_layout Standard
+На всякий случай напомним изучаемые метрики:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $jumpK$
+\end_inset
+
+ — отклонение восстановленной функции 
+\begin_inset Formula $\hat{k}(t)$
+\end_inset
+
+ на выходе из шока относительно ампилтуды шока, т.е.
+\begin_inset Formula 
+\[
+jumpK=\frac{\left|\hat{k}(2T+\tau)-d\right|}{\Delta d}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $jumpKC$
+\end_inset
+
+ — аналог С–метрики на отрезке времени после шока; формально это поправка
+ на то, что наибольшее отклонение от 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+ функция 
+\begin_inset Formula $\hat{k}(t)$
+\end_inset
+
+ может реализовывать не на выходе из шока, а несколько позже:
+\begin_inset Formula 
+\[
+jumpKC=\frac{1}{\Delta d}\left(\max\limits _{t\ge2T+\tau}\left|\hat{k}(t)-d\right|\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $jumpKR$
+\end_inset
+
+ — обычная 
+\begin_inset Formula $\mathbb{L}_{2}$
+\end_inset
+
+–метрика на функции, за исключением того, что мы нормируем ее на длину изучаемог
+о времени:
+\begin_inset Formula 
+\[
+jumpKR=\frac{1}{L}\sqrt{\int\limits _{0}^{L}\left(\hat{k}(\tau)-k_{0}(\tau\right)^{2}d\tau}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $jumpKR0$
+\end_inset
+
+ — модифицированная предыдущая метрика, которая учитывает дисперсность 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+ (полагаю, что сильно зашумленные функции она бы спасла):
+\begin_inset Formula 
+\[
+jumpKR0=\frac{\frac{1}{L}\sqrt{\int\limits _{0}^{L}\left(\hat{k}(\tau)-k_{0}(\tau\right)^{2}d\tau}}{\sigma(k_{0}(t))}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Отметим также, что вопросы касательно корректности метрик 
+\begin_inset Formula $jumpKR$
+\end_inset
+
+ и 
+\begin_inset Formula $jumpKR0$
+\end_inset
+
+ мы обсудим ниже (теперь они вызывают вопросы).
+\end_layout
+
+\begin_layout Section
+Релаксация к невозмущенному значению
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{multicols}{2}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Первую серию реконструкций проведем при следующих параметрах: 
+\begin_inset Formula $\Omega=2\pi$
+\end_inset
+
+, 
+\begin_inset Formula $\Delta w=0.1$
+\end_inset
+
+, 
+\begin_inset Formula $T=1$
+\end_inset
+
+, 
+\begin_inset Formula $L=nT$
+\end_inset
+
+; невозмущенное значение параметра 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+ было выбрано 
+\begin_inset Formula $d=0.25$
+\end_inset
+
+, амплитуда шока 
+\begin_inset Formula $\Delta d=0.25$
+\end_inset
+
+, начало шока — момент времени 
+\begin_inset Formula $2T$
+\end_inset
+
+; длительность шока 
+\begin_inset Formula $\tau=T/2$
+\end_inset
+
+.
+ Количество периодов на всем отрезке интегрирования будем варьировать 
+\begin_inset Formula $n=5,\,10,\,15$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Результаты приведены на риcунке 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Релаксация-к-невозмущенному"
+
+\end_inset
+
+; следует заметить, что восстановленная параметр-функция достаточно долго
+ приходит к постшоковому значению, в то же время характер восстановленной
+ функции в рамках нашего эксперимента существенно не меняется при увеличении
+ отрезка интегрирования
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+отдельно отметим, что в рамках увеличения отрезка используемый численный
+ метод реализован без потери точности, т.е.
+ с сохранением плотности точек сетки на единицу отрезка времени
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/mryodo/gdrive/sun.activity/pic/2206_khat_positive_long_5.eps
+	width 90col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $n=5$
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:3sub1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/mryodo/gdrive/sun.activity/pic/2206_khat_positive_long_10.eps
+	width 90col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $n=10$
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:3sub2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Релаксация к невозмущенному значению при длительности шока в несколько периодов
+ на разных отрезках интегрирования
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Релаксация-к-невозмущенному-1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/mryodo/gdrive/sun.activity/pic/2206_khat_positive_5.eps
+	width 90col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $n=5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/mryodo/gdrive/sun.activity/pic/2206_khat_positive_10.eps
+	width 90col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $n=10$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/mryodo/gdrive/sun.activity/pic/2206_khat_positive_15.eps
+	width 90col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $n=15$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Релаксация к невозмущенному значению при длительности шока в полпериода
+ на разных отрезках интегрирования
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Релаксация-к-невозмущенному"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Согласно прошлому отчету мы ожидали некоторого эффекта от близкого конца
+ отрезка интегрирования.
+ Положим теперь длину шока 
+\begin_inset Formula $\tau=3T$
+\end_inset
+
+; в случае 
+\begin_inset Formula $n=5$
+\end_inset
+
+ это будет означать, что параметр-функция нулевого приближения 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+ не возвращается к постшоковому значению.
+ Из рисунка 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Релаксация-к-невозмущенному-1"
+
+\end_inset
+
+ можно сделать два наблюдения: согласно 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:3sub1"
+
+\end_inset
+
+ процесс восстановления к шоковому значению тоже может быть достаточно продолжит
+ельным (этому посвящен рисунок 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Релаксация-к-возмущенному"
+
+\end_inset
+
+); в то же время рисунок 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:3sub2"
+
+\end_inset
+
+ показывает, что после такого длительного шока все равно наблюдается релаксация
+ к невозмущенному значению (тоже, как видно, довольно долгая; существенно
+ дольше, чем при относительно коротком шоке) без существенных изменений
+ восстановленной функции на совпадающих отрезках времени (
+\begin_inset Formula $t<5T$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Соответственно продемонстрируем еще один случай 
+\begin_inset Formula $\tau=L-2T$
+\end_inset
+
+, т.е.
+ ситуации, в которых параметр-функция не возвращается к невозмущенному состоянию
+ в рамках отрезка интегрирования (набором картинок для разных отрезков интегриро
+вания следует считать рисунки 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:3sub1"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:4sub1"
+
+\end_inset
+
+ и 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:4sub2"
+
+\end_inset
+
+).
+ Приведенные графики в общем и целом повторяют картину, наблюдаемую на рисунке
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Релаксация-к-невозмущенному"
+
+\end_inset
+
+: наблюдается акцентированное стремление восстановленной параметр-функции
+ 
+\begin_inset Formula $\hat{{k}(t)}$
+\end_inset
+
+ к 
+\begin_inset Quotes fld
+\end_inset
+
+финальному
+\begin_inset Quotes frd
+\end_inset
+
+ значению нулевого приближения параметр-функции 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+, однако окончательный выход на ассимптоту происходит через довольно долгое
+ время.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/mryodo/gdrive/sun.activity/pic/2206_khat_positive_end_10.eps
+	width 90col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $n=10$
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:4sub1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/mryodo/gdrive/sun.activity/pic/2206_khat_positive_end_15.eps
+	width 90col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $n=15$
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:4sub2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Релаксация к возмущенному значению при невозвратном шоке на разных отрезках
+ интегрирования
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Релаксация-к-возмущенному"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{multicols}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Влияние длины отрезка интегрирования на описанные метрики относительно длительно
+сти шока
+\end_layout
+
+\begin_layout Standard
+В прошлом нашем отчете возник вопрос о том, насколько наблюдаемые эффекты
+ на перечисленных метриках относительно изменения длительности шока (в единицу
+ периода, 
+\begin_inset Formula $\tau/T$
+\end_inset
+
+) зависят от того, насколько близко к времени окончания шока попадает конец
+ отрезка интегрирования (в особенности вопрос касался метрик 
+\begin_inset Formula $jumpKR$
+\end_inset
+
+ и 
+\begin_inset Formula $jumpKR0$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Чтобы ответить на данный вопрос проведем две серии численных экспериментов:
+ положим 
+\begin_inset Formula $\Omega=2\pi$
+\end_inset
+
+, 
+\begin_inset Formula $\Delta w=0.1$
+\end_inset
+
+, 
+\begin_inset Formula $T=1$
+\end_inset
+
+, 
+\begin_inset Formula $L=nT$
+\end_inset
+
+; невозмущенное значение параметра 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+ было выбрано 
+\begin_inset Formula $d=0.25$
+\end_inset
+
+, амплитуда шока 
+\begin_inset Formula $\Delta d=0.25$
+\end_inset
+
+, начало шока — момент времени 
+\begin_inset Formula $2T$
+\end_inset
+
+, таким образом длительность шока лежит в пределах 
+\begin_inset Formula $0\le\tau\le(n-2)T$
+\end_inset
+
+; напомним, что в связи с особенностью процесса восстановления (а точнее
+ подсчета скользящей корреляции, подробнее см.
+ предыдущий отчет) реальная максимальная длительность меньше на 
+\begin_inset Formula $T/2$
+\end_inset
+
+.
+ Отличаться проводимые серии экспериментов будут только количеством периодов
+ на отрезке интегрирования: в первой серии, совпадающий с экспериментом
+ из прошлого отчета, положим 
+\begin_inset Formula $n=10$
+\end_inset
+
+; во второй же отнесем конец отрезка интегрирования дальше по времени, чтобы
+ изучить, насколько найденные эффекты зависят от ограничения на 
+\begin_inset Formula $L$
+\end_inset
+
+, положим 
+\begin_inset Formula $n=15$
+\end_inset
+
+.
+ Для большей наглядности приведем графики для совпадающих метрики на одном
+ рисунке.
+\end_layout
+
+\begin_layout Standard
+Обсудим то, что видно на графиках:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/mryodo/gdrive/sun.activity/2206_k-10-15.eps
+	width 50col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Сравнение в метрике
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:k"
+
+\end_inset
+
+ 
+\begin_inset Formula $jumpK$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/mryodo/gdrive/sun.activity/2206_kC-10-15.eps
+	width 50col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Сравнение в мет
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:kc"
+
+\end_inset
+
+рике 
+\begin_inset Formula $jumpKC$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Амплитуда отклонения после шока
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/mryodo/gdrive/sun.activity/2206_kR-10-15.eps
+	width 50col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Сравнение в мет
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:kr"
+
+\end_inset
+
+рике 
+\begin_inset Formula $jumpKR$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/mryodo/gdrive/sun.activity/2206_kR0-10-15.eps
+	width 50col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Сравн
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:kr0"
+
+\end_inset
+
+ение в метрике 
+\begin_inset Formula $jumpKR0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Качество восстановления
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+как видно на графиках 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:k"
+
+\end_inset
+
+ и 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:kc"
+
+\end_inset
+
+ увеличение отрезка интегрирования на данные метрики не оказывает абсолютно
+ никакого влияния;
+\end_layout
+
+\begin_layout Itemize
+в то же время заметно, что построенная метрика выходит на ассимптоту, приближаяс
+ь к относительной амлитуде на постшоковом отрезке времени, равной 1; по
+ сути, наблюдается релаксация к возмущенному значению, которую мы наблюдали
+ на рисунке 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Релаксация-к-возмущенному"
+
+\end_inset
+
+; с другой стороны, этот выход сопровождается колебаниями, наличие которых
+ ранее мы списывали на эффекты близости конца отрезка интегрирования; теперь
+ же, видимо, следует считать, что это именно содержательная особенность
+ приближения данной метрики к ассимптоте;
+\end_layout
+
+\begin_layout Itemize
+обратная картина наблюдается при сравнении двух оставшихся метрик на рисунках
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:kr"
+
+\end_inset
+
+ и 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:kr0"
+
+\end_inset
+
+ — получающиеся графики 
+\emph on
+абсолютно
+\emph default
+ не похожи.
+ Куда более любопытным выглядит тот факт, что на малых временах 
+\begin_inset Formula $t<4T$
+\end_inset
+
+ можно заметить
+\begin_inset Formula 
+\[
+\frac{jumpKR_{10}(\tau)}{jumpKR_{15}(\tau)}\approx\frac{L_{15}}{L_{10}}=\frac{n_{15}T}{n_{10}T}=\frac{15}{10}
+\]
+
+\end_inset
+
+что легко угадывается из определения:
+\begin_inset Formula 
+\[
+jumpKR=\frac{1}{L}\sqrt{\int\limits _{0}^{L}\left(\hat{k}(\tau)-k_{0}(\tau\right)^{2}d\tau}
+\]
+
+\end_inset
+
+Т.о.
+ можно внести два предложения:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+метрики 
+\begin_inset Formula $jumpKR$
+\end_inset
+
+ и 
+\begin_inset Formula $jumpKR0$
+\end_inset
+
+ можно использовать только для сравнения качества восстановления для восстановле
+ний, проведенных при 
+\emph on
+одном и том же
+\emph default
+ 
+\begin_inset Formula $L$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+можно изменить саму метрику, заменив нормировочный коэффциент на нечто,
+ не зависящее от 
+\begin_inset Formula $n$
+\end_inset
+
+ или 
+\begin_inset Formula $L$
+\end_inset
+
+.
+ Мы намеренно сейчас не будем вдаваться в то, что же это должно быть за
+ число и для следующей картинки положим его равным 1, т.е.
+ изменим масштаб оси ординат, неформально говоря;
+\end_layout
+
+\begin_layout Itemize
+аналогичное рассуждение можно привести и для 
+\begin_inset Formula $jumpKR0$
+\end_inset
+
+, с учетом того, что влияение отрезка интегрирования присутствует также
+ и в дисперсии нулевого приближения, поэтому просто закрепим эту дисперсию
+ одной и той же в обоих случаях (
+\emph on
+формально, конечно, следует подумать над более корректной нормировкой
+\emph default
+) 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/mryodo/gdrive/sun.activity/2206_kR-10-15-norm.eps
+	width 50col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Сравнение в мет
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:kr-1"
+
+\end_inset
+
+рике 
+\begin_inset Formula $jumpKR$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/mryodo/gdrive/sun.activity/2206_kR0-10-15-norm2.eps
+	width 50col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Сравн
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:kr0-1"
+
+\end_inset
+
+ение в метрике 
+\begin_inset Formula $jumpKR0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Качество восстановления (нормированный случай)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+в то же время приведенные на рисуках 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:kr-1"
+
+\end_inset
+
+ и 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:kr0-1"
+
+\end_inset
+
+ графики позволяют понять следующее: как бы не относились к предложенным
+ изменениям на нормы, в их случае близость конца отрезка интегрирования
+ существенно влияет на характер метрики; в частности, следствием именно
+ этого эффекта являются возникающие максимумы.
+\end_layout
+
+\begin_layout Section
+Случай шока с отрицательной амплитудой, нарушающей основное Курамото-неравенство
+\end_layout
+
+\begin_layout Standard
+В данной части рассмотрим случай отрицательного 
+\begin_inset Formula $\Delta d$
+\end_inset
+
+, причем заведомо отметим, что для введение такой амплитуды не нарушает
+ основное неравенство (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:main"
+
+\end_inset
+
+), то процесс восстановления не сообщает нам никакой существенно новой информаци
+и.
+ Поэтому положим 
+\begin_inset Formula $\Delta d$
+\end_inset
+
+ таким, что на время шока основное Курамото-неравенство не выполняется.
+\end_layout
+
+\begin_layout Standard
+Для вычислений было выбрано: 
+\begin_inset Formula $\Omega=2\pi$
+\end_inset
+
+, 
+\begin_inset Formula $\Delta w=0.1$
+\end_inset
+
+, 
+\begin_inset Formula $T=1$
+\end_inset
+
+, 
+\begin_inset Formula $n=10$
+\end_inset
+
+, 
+\begin_inset Formula $L=nT$
+\end_inset
+
+; невозмущенное значение параметра 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+ было выбрано 
+\begin_inset Formula $d=0.25$
+\end_inset
+
+, амплитуда шока 
+\begin_inset Formula $\Delta d=-0.2$
+\end_inset
+
+, начало шока — момент времени 
+\begin_inset Formula $2T$
+\end_inset
+
+ (можно заметить, что такая амплитуда как раз подходит под желаемое нарушение).
+\end_layout
+
+\begin_layout Standard
+На самом деле здесь в некотором смысле можно было бы ожидать графиков о
+ разовых запусках на таких данных, однако мы сразу обратимся к знакомым
+ графикам о метриках, эффекты на которых будем пояснять при помощи наших
+ разовых запусков.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/mryodo/gdrive/sun.activity/python/2306_k-10-4000-neg.eps
+	width 50col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Сравнение в метрике
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:k-1"
+
+\end_inset
+
+ 
+\begin_inset Formula $jumpK$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/mryodo/gdrive/sun.activity/python/2306_kC-10-4000-neg.eps
+	width 50col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Сравнение в мет
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:kc-1"
+
+\end_inset
+
+рике 
+\begin_inset Formula $jumpKC$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Амплитуда отклонения после шока
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Несложно заметить, что характер рисунков 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:k-1"
+
+\end_inset
+
+ и 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:kc-1"
+
+\end_inset
+
+ существенно отличается от рисунков 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:k"
+
+\end_inset
+
+ и 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:kc"
+
+\end_inset
+
+ соответственно.
+ Бросаются в глаза две ключевые разницы: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+графики растут существенно медленнее, чем при положительных шоках;
+\end_layout
+
+\begin_layout Itemize
+существует некоторая точка-перелом, после которой процедура восстановления
+ перестает вести себя адекватно.
+ Здесь существует соблазн попытаться объяснить это явление уже упомянутой
+ близостью конца отрезка интегрирования, однако это не так: во-первых, можно
+ построить аналогичные картинки для более длительного отрезка интегрирования
+ (что мы сделали, но они вряд ли являются наглядными, поэтому отсутствуют
+ в данном отчете); во-вторых давайте изучим, что происходит с процессом
+ восстановления при разных длительностях;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/mryodo/gdrive/sun.activity/python/2306_kR-10-4000-neg.eps
+	width 50col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Сравнение в мет
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:kr-2"
+
+\end_inset
+
+рике 
+\begin_inset Formula $jumpKR$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/mryodo/gdrive/sun.activity/python/2306_kR0-10-4000-neg.eps
+	width 50col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Сравн
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:kr0-2"
+
+\end_inset
+
+ение в метрике 
+\begin_inset Formula $jumpKR0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Качество восстановления
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/mryodo/gdrive/sun.activity/python/2306_kkc-10-4000-neg.eps
+	width 50col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Сравнение метрик 
+\begin_inset Formula $jumpK$
+\end_inset
+
+ и 
+\begin_inset Formula $jumpKC$
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:kkc-222"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+для порядка также приведем графики для оставшихся метрик (рис.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:kr-2"
+
+\end_inset
+
+ и 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:kr0-2"
+
+\end_inset
+
+), а также сравнение для метрик 
+\begin_inset Formula $jumpK$
+\end_inset
+
+ и 
+\begin_inset Formula $jumpKC$
+\end_inset
+
+ (рис.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:kkc-222"
+
+\end_inset
+
+), которое наглядно демонстрирует еще одну особенность отрицательных шоков
+ с нарушением: различия между данными метриками довольно серьезны.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Однако более важной задачей является необходимость разобраться, почему же
+ процесс восстановления в таких условиях выдает неадекватные результаты.
+\end_layout
+
+\begin_layout Standard
+Приведем несколько отдельных запусков: все параметры сохраним прежними,
+ но для наглядности и избежания разговоров о близости конца отрезка интегрирован
+ия увеличим отрезок интегрирования, 
+\begin_inset Formula $n=15$
+\end_inset
+
+, для различных длительностей шока:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/mryodo/gdrive/sun.activity/pic/2306_khat_neg_800_15.eps
+	width 50col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\tau=2T$
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:neg15-1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/mryodo/gdrive/sun.activity/pic/2306_khat_neg_1600_15.eps
+	width 50col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\tau=4T$
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:neg15-2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/mryodo/gdrive/sun.activity/pic/2306_khat_neg_2400_15.eps
+	width 50col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\tau=6T$
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:neg15-3"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Восстановление параметр-функции при разных длительностях шоков, нарушающих
+ основное Курамото-неравенство
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:neg15"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Как мы видим, рисунки 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:neg15-1"
+
+\end_inset
+
+ и 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:neg15-2"
+
+\end_inset
+
+ во многом повторяют ранее изученный процесс восстановления: к моменту выхода
+ из шока параметр достигает наибольшего (или наибольшего в рамках периода)
+ отклонения от невозмущенного состояния, после чего начинает к нему долго,
+ но успешно релаксировать.
+ Однако основная проблема заключается в рисунке 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:neg15-3"
+
+\end_inset
+
+: как видно по нему, заявленная 
+\begin_inset Quotes fld
+\end_inset
+
+неадекватность
+\begin_inset Quotes frd
+\end_inset
+
+ процесса восстановления здесь заключена в том, что восстановленная функция
+ 
+\begin_inset Formula $\hat{k}(t)$
+\end_inset
+
+ перестает пытаться релаксировать к шокому значению в течение шока! Собственно
+ этот эффект разумно объяснить тем, что система слишком долго находилась
+ в 
+\emph on
+недопустимом
+\emph default
+ согласно основному Курамото-неравенству состоянии, что делает ее непригодной
+ для процесса восстановления.
+\end_layout
+
+\begin_layout Standard
+Чтобы развеять оставшиеся сомнения, продлим отрезок интегрирования до 
+\begin_inset Formula $n=50$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/mryodo/gdrive/sun.activity/pic/2306_khat_neg_2400_50.eps
+	width 50col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Восстановление параметров при 
+\begin_inset Formula $\tau=6T$
+\end_inset
+
+, 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:neg50-1"
+
+\end_inset
+
+
+\begin_inset Formula $n=50$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Сохраняя предыдушую длительность шока 
+\begin_inset Formula $\tau=6T$
+\end_inset
+
+, для которой наблюдался сомнительный результат, заметим, что несмотря на
+ возникший существенный эффект некорректности восстановления, параметр-функция
+ все равно через крайне долгое время приходит к невозмушенному значению.
+\end_layout
+
+\begin_layout Standard
+С другой стороны, разре
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/mryodo/gdrive/sun.activity/pic/2306_khat_neg_9200_50.eps
+	width 50col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Восстановление параметров при 
+\begin_inset Formula $\tau=23T$
+\end_inset
+
+, 
+\begin_inset Formula $n=50$
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:neg50-2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
