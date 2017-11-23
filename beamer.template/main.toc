@@ -1,0 +1,2 @@
+\select@language {russian}
+\beamer@sectionintoc {1}{Спасибо за внимание!}{21}{0}{1}
