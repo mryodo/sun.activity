@@ -1,0 +1,501 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{multicol}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language russian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 1.5cm
+\rightmargin 3cm
+\bottommargin 1.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle empty
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Проблемное восстановление реальных данных в модели Курамото
+\end_layout
+
+\begin_layout Standard
+Рассмотрим задачу восстановления функции каплинга по реальным данным (polar
+ faculae) для магнитного поля Солнца.
+\end_layout
+
+\begin_layout Paragraph*
+Дано.
+\end_layout
+
+\begin_layout Standard
+Две временные серии, соответствующие магнитной активности на северном и
+ южном полюсах соответственно; будем обозначать их 
+\begin_inset Formula $N_{t}$
+\end_inset
+
+ и 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+.
+ Целью является восстановить функцию каплинг.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename n-s.png
+	scale 40
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Графики 
+\begin_inset Formula $N_{t}$
+\end_inset
+
+ и 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ без сглаживания
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Предложим следующую процедуру:
+\end_layout
+
+\begin_layout Enumerate
+Посчитаем скользящую корреляцию 
+\begin_inset Formula $\hat{C}_{0}(t)$
+\end_inset
+
+ в окне периода (
+\begin_inset Formula $\approx11$
+\end_inset
+
+ лет) у временных серий 
+\begin_inset Formula $N_{t}$
+\end_inset
+
+ и 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+:
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename c0.png
+	scale 40
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\hat{C}_{0}(t)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Будем исходить из квазистационарности, т.е.
+ положим, что фазовая разность 
+\begin_inset Formula $\hat{\theta}(t)$
+\end_inset
+
+ между 
+\begin_inset Formula $N_{t}$
+\end_inset
+
+ и 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ довольно близка к константе.
+ Тогда, как известно, 
+\begin_inset Formula $\hat{C}_{0}(t)=\cos\hat{\theta}(t)$
+\end_inset
+
+; тогда 
+\begin_inset Formula $\hat{\theta}(t)=\arccos\hat{C}_{0}(t)$
+\end_inset
+
+:
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename teta0.png
+	scale 40
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Фазовая разность из реальных данных в предположении о квазистационарности
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Исходя из предположения о том, что 
+\begin_inset Formula $\frac{d}{dt}\hat{\theta}_{0}(t)\approx0$
+\end_inset
+
+, получаем 
+\begin_inset Formula 
+\[
+0\approx\frac{d}{dt}\hat{\theta}_{0}(t)=2\Delta w-k_{0}(t)\sin\hat{\theta}_{0}(t)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+k_{0}(t)=\frac{2\Delta w}{\sin\hat{\theta}_{0}(t)}
+\]
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename k0.png
+	scale 40
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Полученное 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+
+\end_layout
+
+\end_inset
+
+Заметим также, что из-за такого пересчета, поскольку 
+\begin_inset Formula $\left|\sin\hat{\theta}_{0}(t)\right|\le1$
+\end_inset
+
+ невозможно получить нарушение основного Курамото-неравенства.
+\end_layout
+
+\begin_layout Enumerate
+Что произойдет, если мы начнем теперь восстанавливаться с найденного 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+? Ясно, что решение дифференциального уравнения приведет к получению 
+\begin_inset Formula $\hat{\theta}_{0}(t)$
+\end_inset
+
+.
+ При помощи данной функции сконструируем два виртуальных маятника 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ и 
+\begin_inset Formula $Y_{t}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\begin{cases}
+X_{t}=\sin\left(\Omega t\right)\\
+Y_{t}=\sin\left(\Omega t+\hat{\theta}_{0}(t)\right)
+\end{cases}
+\]
+
+\end_inset
+
+Посчитав скользящую корреляцию между ними в том же окне периода, мы получим
+ новую 
+\begin_inset Formula $C_{0}(t)$
+\end_inset
+
+ и соответственно новую фазовую разницу 
+\begin_inset Formula $\varphi(t)=\arccos C_{0}(t)$
+\end_inset
+
+:
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename phi.png
+	scale 40
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Сравнение 
+\begin_inset Formula $\hat{\theta}_{0}(t)$
+\end_inset
+
+ и 
+\begin_inset Formula $\varphi(t)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Теперь по полученной фазовой разнице можно ровно так же получить 
+\begin_inset Formula $\hat{k}(t)$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\hat{k}(t)=\frac{2\Delta w}{\sin\varphi(t)}
+\]
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename khat.png
+	scale 40
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Сравнение 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+ и 
+\begin_inset Formula $\hat{k}(t)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Описанная процедура, помимо того, что довольно странна, оставляет ряд вопросов:
+ 
+\end_layout
+
+\begin_layout Itemize
+В результате 
+\emph on
+никогда
+\emph default
+ не случается катастрофа (за счет деления на синус, как указано выше);
+\end_layout
+
+\begin_layout Itemize
+В некотором смысле мы действительно говорим о том, что мы восстанавливаем
+ некоторое нулевое приближение, полученное из данных; однако важный нюанс
+ заключается в том, что в данном процессе мы и нулевое приближение и реконструкц
+ию получили из соображений квазистационарности;
+\end_layout
+
+\begin_layout Itemize
+Правда ли, что корректно проводить реконструкцию, не решая по-честному ни
+ одного дифференциального уравнения?
+\end_layout
+
+\begin_layout Itemize
+Верно ли считать, что на самом деле мы восстанавливаем некоторое другое
+ 
+\begin_inset Formula $K(t)$
+\end_inset
+
+, а 
+\begin_inset Formula $k_{0}$
+\end_inset
+
+ и 
+\begin_inset Formula $\hat{k}$
+\end_inset
+
+ оба являются результатами восстановления (и если да, то лучше же 
+\begin_inset Formula $k_{0}$
+\end_inset
+
+? с другой стороны, он был получен из реальных данных без виртуальных маятников
+ только из модельного соображения про зависимость скользящей корреляции
+ от фазовой разницы в константном случае)
+\end_layout
+
+\end_body
+\end_document
