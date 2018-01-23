@@ -1,0 +1,536 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language russian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Восстановление каплинга по реальным данным в модели Курамото
+\begin_inset Newline newline
+\end_inset
+
+Попытка вторая
+\end_layout
+
+\begin_layout Paragraph*
+Описание процедуры.
+ 
+\end_layout
+
+\begin_layout Standard
+Напомним исходное: даны две временные серии (
+\begin_inset Formula $X(t)$
+\end_inset
+
+ и 
+\begin_inset Formula $Y(t)$
+\end_inset
+
+), 
+\emph on
+polar focalue, 
+\emph default
+описывающие магнитную активность на полюсах Солнцах.
+ Наша цель 
+\emph on
+при помощи этих измерений восстановить каплинг
+\emph default
+.
+ Приведем исправленную процедуру, какой она кажется сейчас:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Получим из данных некоторое 
+\begin_inset Formula $k(t)$
+\end_inset
+
+
+\series default
+.
+ Для этого в 11-летнем окне посчитаем скользящую корреляцию между данными
+ 
+\begin_inset Formula $X(t)$
+\end_inset
+
+ и 
+\begin_inset Formula $Y(t)$
+\end_inset
+
+, назовем ее 
+\begin_inset Formula $C(t)$
+\end_inset
+
+.
+ Далее положим систему стационарной или близкой к стационарной, для которой
+ известно, что 
+\begin_inset Formula 
+\[
+\theta(t)=\arccos C(t),
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $\theta(t)$
+\end_inset
+
+ — есть фазовая разность между маятниками.
+ Более того, раз система находится в квазистационарном состоянии, то 
+\begin_inset Formula $\dot{\theta}\approx0$
+\end_inset
+
+; таким образом, подставляя 
+\begin_inset Formula $\theta(t)$
+\end_inset
+
+ в уравнение эволюции фазовой разности в модели Курамото:
+\begin_inset Formula 
+\[
+\dot{\theta}=2\Delta\omega-k(t)\sin\theta(t)
+\]
+
+\end_inset
+
+находим 
+\begin_inset Formula $k(t)=\frac{2\Delta\omega}{\sin\theta}$
+\end_inset
+
+ (напоминание о постоянно используемых нами обозначениях опущу).
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Найдем 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+
+\series default
+.
+ Заметим, что предположение о квазистационарности отнюдь не является гарантией
+ того, что при подстановке найденного 
+\begin_inset Formula $k(t)$
+\end_inset
+
+ в уравнение, мы получим уже известное 
+\begin_inset Formula $\theta(t)$
+\end_inset
+
+ (как мне казалось ранее, за что я страшно извиняюсь); на самом деле мы
+ ровно и проэксплуатируем тот факт, что мы не находимся в стационарной ситуации.
+\begin_inset Newline newline
+\end_inset
+
+Итак, решим уравнение
+\begin_inset Formula 
+\[
+\dot{\varphi}=2\Delta\omega-k(t)\sin\varphi(t)
+\]
+
+\end_inset
+
+с найденным ранее 
+\begin_inset Formula $k(t)$
+\end_inset
+
+; решение назовем 
+\begin_inset Formula $\varphi(t)$
+\end_inset
+
+ (чтобы отличать эту фазовую разность от полученной из реальных данных).
+ Добавив же в этот момент квазистацинарность, мы можем получить 
+\begin_inset Formula $k_{0}(t)=\frac{2\Delta\omega}{\sin\varphi}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Найдем восстановленное при помощи виртуальных маятников 
+\begin_inset Formula $\hat{k}(t)$
+\end_inset
+
+
+\series default
+.
+ Процедуру повторим обычную: по найденной разности 
+\begin_inset Formula $\varphi(t)$
+\end_inset
+
+ построим два виртуальных маятника
+\begin_inset Formula 
+\[
+\begin{cases}
+X_{0}(t)=\sin\Omega t\\
+Y_{0}(t)=\sin\left(\Omega t+\varphi(t)\right)
+\end{cases},
+\]
+
+\end_inset
+
+у которых посчитаем скользящую корреляцию 
+\begin_inset Formula $C_{0}(t)$
+\end_inset
+
+, для которой из предположения квазистацинарности найдем свои 
+\begin_inset Formula $\varphi_{0}(t)$
+\end_inset
+
+ и 
+\begin_inset Formula $\hat{k}(t)$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\varphi_{0}(t)=\arccos C_{0}(t),\qquad\hat{k}(t)=\frac{2\Delta\omega}{\sin\varphi_{0}(t)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Результаты процедуры.
+\end_layout
+
+\begin_layout Standard
+Приведем сравнения получаемых фазовых разностей на всех трех этапах и восстановл
+енных каплингов на всех трех этапах для трех разных 
+\begin_inset Formula $\Delta\omega$
+\end_inset
+
+.
+ Почему?
+\end_layout
+
+\begin_layout Standard
+Заметим следующее: уравнение на шаге 2 можно переписать как
+\begin_inset Formula 
+\[
+\dot{\varphi}=2\Delta\omega-\frac{2\Delta\omega}{\sin\theta(t)}\sin\varphi(t)=2\Delta\omega\left(1-\frac{\sin\varphi(t)}{\sin\theta(t)}\right),
+\]
+
+\end_inset
+
+ то есть производная пропорциональна 
+\begin_inset Formula $\Delta\omega$
+\end_inset
+
+.
+ Как видно на рисунках, похожесть восстановления наблюдается при довольно
+ больших 
+\begin_inset Formula $\Delta\omega$
+\end_inset
+
+, что вряд ли хорошо.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /Users/mryodo/Downloads/dw001_fi.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Delta\omega=0.01$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /Users/mryodo/Downloads/dw001_k.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Delta\omega=0.01$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /Users/mryodo/Downloads/dw01_fi.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Delta\omega=0.1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /Users/mryodo/Downloads/dw01_k.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Delta\omega=0.1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /Users/mryodo/Downloads/dw05_fi.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Delta\omega=0.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /Users/mryodo/Downloads/dw05_k.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Delta\omega=0.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
