@@ -1,0 +1,1018 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\date{}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement !h
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 3cm
+\rightmargin 2cm
+\bottommargin 3cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Pictures with basic description
+\begin_inset Newline newline
+\end_inset
+
+on 
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Kuramoto-Model Coupling Reconstruction Process
+\end_layout
+
+\begin_layout Section
+General scope of the reconstruction procedure and used notation
+\end_layout
+
+\begin_layout Standard
+In this part of the current paper we provide the description of Kuramoto
+ model, notation for used variables and general description of inverse problem
+ for Kuramoto model being studied.
+\end_layout
+
+\begin_layout Standard
+Let us consider two oscillators with frequiences 
+\begin_inset Formula $\omega_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\omega_{2}$
+\end_inset
+
+ respectively; let 
+\begin_inset Formula $\Omega=\frac{\omega_{1}+\omega_{2}}{2}$
+\end_inset
+
+ be their sychronised common frequency, thus 
+\begin_inset Formula 
+\[
+\begin{cases}
+\omega_{1} & =\Omega+\Delta\omega\\
+\omega_{2} & =\Omega-\Delta\omega
+\end{cases},
+\]
+
+\end_inset
+
+where we denote symmetrical frequency difference as 
+\begin_inset Formula $\Delta\omega$
+\end_inset
+
+.
+ In order to describe the evolution of their phases 
+\begin_inset Formula $\theta_{1}(t)$
+\end_inset
+
+ and 
+\begin_inset Formula $\theta_{2}(t)$
+\end_inset
+
+ we propose following diffrential equations(let us denote the coupling function
+ of oscillators as 
+\begin_inset Formula $k=k(t)$
+\end_inset
+
+):
+\begin_inset Formula 
+\[
+\begin{cases}
+\dot{\theta}_{1}=\omega_{1}+\frac{k(t)}{2}\sin\left(\theta_{2}(t)-\theta_{1}(t)\right)\\
+\dot{\theta}_{2}=\omega_{2}+\frac{k(t)}{2}\sin\left(\theta_{1}(t)-\theta_{2}(t)\right)
+\end{cases},
+\]
+
+\end_inset
+
+which could be easily transformed by summing and substracting equations
+ above into the following:
+\begin_inset Formula 
+\[
+\begin{cases}
+\dot{\theta}_{1}+\dot{\theta}_{2}=2\Omega\\
+\dot{\theta}_{1}-\dot{\theta}_{2}=2\Delta\omega-k(t)\sin\left(\theta_{1}(t)-\theta_{2}(t)\right)
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Denoting 
+\begin_inset Formula $\theta=\theta_{1}-\theta_{2}$
+\end_inset
+
+, we get 
+\begin_inset Formula 
+\begin{equation}
+\dot{\theta}=2\Delta\omega-k(t)\sin\theta(t)\label{eq:kur1}
+\end{equation}
+
+\end_inset
+
+Solving equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:kur1"
+
+\end_inset
+
+, the evolution of phaze difference can be obtained (assuming the first
+ equation of the system is easily solvable); this states the direct problem
+ in Kuramoto model.
+\end_layout
+
+\begin_layout Standard
+Our paper focuses on the 
+\emph on
+inverse
+\emph default
+ problem: considering that the coupling 
+\begin_inset Formula $k(t)$
+\end_inset
+
+ is generally unknown, let us assume that its approximation 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+ can be obtained from the real data (the whole procedure of its extraction
+ and neccesary assumptions are discussed in the third part of the paper).
+ Then by solving equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:kur1"
+
+\end_inset
+
+ with 
+\begin_inset Formula $k=k_{0}(t)$
+\end_inset
+
+ we get the approximation of phaze difference 
+\begin_inset Formula $\theta_{0}(t)$
+\end_inset
+
+; this can be use to construct two 
+\begin_inset Quotes eld
+\end_inset
+
+virtual
+\begin_inset Quotes erd
+\end_inset
+
+ oscillators with given phaze difference 
+\begin_inset Formula $\theta_{0}(t)$
+\end_inset
+
+ (assume 
+\begin_inset Formula $\theta_{1}(t)=\Omega t+\theta_{0}(t)/2$
+\end_inset
+
+ and 
+\begin_inset Formula $\theta_{2}(t)=\Omega t-\theta(t)/2$
+\end_inset
+
+ ):
+\begin_inset Formula 
+\[
+\begin{cases}
+X_{0}(t)=\sin\left(\theta_{1}(t)\right)\\
+Y_{0}(t)=\sin\left(\theta_{2}(t)\right)
+\end{cases}
+\]
+
+\end_inset
+
+Note that proposed virtual oscillators imply that amplitudes of both oscillators
+ are the same; moreover let us compute the sliding correlation 
+\begin_inset Formula $C_{0}(t)$
+\end_inset
+
+ between 
+\begin_inset Formula $X_{0}(t)$
+\end_inset
+
+ and 
+\begin_inset Formula $Y_{0}(t)$
+\end_inset
+
+ over a window of common period of oscillators 
+\begin_inset Formula $T=\frac{2\pi}{\Omega}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align}
+C_{0}(t) & =C_{T}(X_{0},Y_{0})=\label{eq:slide}\\
+ & =\frac{\int_{t-T/2}^{t+T/2}\left(X_{0}(\tau)-\left\langle X_{0}(\tau)\right\rangle _{T}\right)\left(Y_{0}(\tau)-\left\langle Y_{0}(\tau)\right\rangle _{T}\right)d\tau}{\sqrt{\int_{t-T/2}^{t+T/2}\left(X_{0}(\tau)-\left\langle X_{0}(\tau)\right\rangle _{T}\right)^{2}d\tau\int_{t-T/2}^{t+T/2}\left(Y_{0}(\tau)-\left\langle Y_{0}(\tau)\right\rangle _{T}\right)^{2}d\tau}},\nonumber 
+\end{align}
+
+\end_inset
+
+where by 
+\begin_inset Formula $\left\langle X_{0}(\tau)\right\rangle _{T}$
+\end_inset
+
+ we denote the mean value of 
+\begin_inset Formula $X_{0}(t)$
+\end_inset
+
+ over used window.
+\end_layout
+
+\begin_layout Standard
+The main assumption of overseen reconstruction procedure states that the
+ system is close to its stationary state; in which case the sliding correlation
+ between oscillators can be computed as 
+\begin_inset Formula $\theta_{0}(t)=\cos C_{0}(t)$
+\end_inset
+
+.
+ So in case of quasi-stationarity new reconstructed phaze difference 
+\begin_inset Formula $\varphi(t)$
+\end_inset
+
+ can be obtained using 
+\begin_inset Formula $C_{0}(t)$
+\end_inset
+
+ computed by eqaution 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:slide"
+
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\varphi(t)=\arccos C_{0}(t)
+\]
+
+\end_inset
+
+Using that 
+\begin_inset Formula $\dot{\varphi}\approx0$
+\end_inset
+
+ one could substitute 
+\begin_inset Formula $\theta$
+\end_inset
+
+ with 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ in the equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:kur1"
+
+\end_inset
+
+ and find reconstructed coupling 
+\begin_inset Formula $\hat{k}(t)$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\hat{k}(t)=\frac{2\Delta\omega}{\sin\varphi(t)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that described procedure is proved to be correct in case
+\begin_inset Formula 
+\begin{equation}
+\left|k_{0}(t)\right|\ge2\Delta\omega\label{eq:ineq}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+which is refered as 
+\emph on
+the main Kuramoto inequality
+\emph default
+.
+\end_layout
+
+\begin_layout Section
+Model functions and reconstruction
+\end_layout
+
+\begin_layout Standard
+In this part of our research we investigate the proposed reconstruction
+ procedure from qualitative and quantitative (we describe used metrics further)
+ points of view for 4 different sets of coupling approxiamtions 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+: piecewise-constant, sine, autoregressive approximations and its combination;
+ focusing on the case of temporarily breaking the main Kuramoto inequality
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:ineq"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Piecewise-constant approximations
+\end_layout
+
+\begin_layout Standard
+In this case we assume that 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+ can be described as
+\begin_inset Formula 
+\[
+k_{0}(t)=\begin{cases}
+d, & t<T_{0}\lor t>T_{0}+s\\
+d+\Delta d, & T_{0}\le t\le T_{0}+s
+\end{cases}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\Delta d$
+\end_inset
+
+ can be either positive or negative; we refer to the period of the second
+ value 
+\begin_inset Formula $d+\Delta d$
+\end_inset
+
+ as the shock period.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../python/pics/v2/constv2.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Reconstruction of piecewise-constant aprroxiamtion 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+: examples and length of the period with shock corresponding to the second
+ extremum and singularity appearances
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:pc"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figures (1a–c) illustrate results of reconstruction of single approximation
+ in three different cases: without breaking the main Kuramoto inequality
+ (1a); breaking Kuramoto inequality with resulting additional extremum appearanc
+e after the shock period (1b); and breaking Kuramoto inequality with resulting
+ appearance of singularity in reconstructed function (1c).
+ 
+\end_layout
+
+\begin_layout Standard
+In case of (1a) it can be seen that the system relaxes to the shocked value
+ during the shock period and to the normal value after the shock significant
+ amount of time (measured in common periods of oscillators); thus one can
+ say that the system has a noticeable 
+\begin_inset Quotes eld
+\end_inset
+
+memory
+\begin_inset Quotes erd
+\end_inset
+
+.
+ As for the effects of breaking the main Kuramoto inequality (among cases
+ in which the shock period is not long enough to create qualitatively new
+ figures) we outline two different scenarious: if the shock period is long
+ enough (consider figures (1d–e) in order to established the appropriate
+ length) reconstructed function tends to begin a relaxation to the normal
+ value even before the shock period is over thus creating the second extremum
+ after the shock; in case when the system has enough time to fully relax
+ to the normal value during the shock, the reconstruction process results
+ into the singularity in 
+\begin_inset Formula $\hat{k}(t)$
+\end_inset
+
+ (specifically this means that in that moment of time oscillators are fully
+ uncorrelated).
+ 
+\end_layout
+
+\begin_layout Standard
+For the further investigation of this phenomena we provide figures (1d–e)
+ devoted to establishing the length of the shock period 
+\begin_inset Formula $s$
+\end_inset
+
+ towards 
+\begin_inset Formula $\Delta\omega$
+\end_inset
+
+ sufficient for the second extremum and singularity; to give more sophisticated
+ picture we study cases of low coupling (low 
+\begin_inset Formula $d$
+\end_inset
+
+, comparatively to 
+\begin_inset Formula $2\Delta\omega$
+\end_inset
+
+) (fig.
+ 1d) and high coupling (fig.
+ 1e).
+ As shown increasing (and therefore strengthing the breaking difference
+ in the inequality) symmetrical phaze difference results into earlier appearance
+ of both effects and shorter time interval between the second extremum appearanc
+e and the singularity.
+\end_layout
+
+\begin_layout Subsection
+Sine approximations
+\end_layout
+
+\begin_layout Standard
+In this part we propose coupling approximation as follows:
+\begin_inset Formula 
+\[
+k_{0}(t)=A\sin\left(Bt+\varepsilon\right)+C,
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $A$
+\end_inset
+
+ is an amplitude, 
+\begin_inset Formula $B$
+\end_inset
+
+ is a frequency and 
+\begin_inset Formula $C$
+\end_inset
+
+ is a mean value.
+ Moreover, unless stated otherwise, consider 
+\begin_inset Formula $C-A<2\Delta\omega$
+\end_inset
+
+, so we study mainly the case of inequality breaking.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../python/pics/v2/sinv2.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Sine approximations of 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+: examples and quality of reconstruction towards sine frequency
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sin"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Same as for piecewise-constant case, figures (2a–c) illustrate results of
+ reconstruction of single approximation; for those pictures we vary the
+ frequency of sine being reconstructed.
+ Figure (2a) shows the case for correct reconstruction despite the inequality
+ breaking; similar to the piecewise-constant case (fig.
+ (1b)) we observe gradual relaxation to values restricted by inequality
+ with noticeable flattening.
+ Figures (2b) and (2c) shows two opposite cases of poor recontruction quality:
+ for the figure (2b) it can be seen that more frequent fluctuation are less
+ appropriate for the reconstruction which can be explained by an absense
+ of sufficient time for relaxation as seen on fig.
+ (1) and (2a); figure (2c) demonstates the case of singularity achieved
+ by the same condition as on fig.
+ (1c) — too long restricted value period.
+\end_layout
+
+\begin_layout Standard
+Figures (2d–e) generalize the study of reconstruction towards approximation's
+ sine frequency; to measure the quality of the process we propose the following
+ metric:
+\begin_inset Formula 
+\[
+R_{0}[\hat{k},k_{0}]=\frac{\int_{0}^{L}\left(k_{0}(t)-\left\langle k_{0}(t)\right\rangle _{L}\right)\left(\hat{k}(t)-\left\langle \hat{k}(t)\right\rangle _{L}\right)dt}{\int_{0}^{L}k_{0}^{2}(t)dt}
+\]
+
+\end_inset
+
+(in assumption that 
+\begin_inset Formula $t\in[0;L]$
+\end_inset
+
+ so 
+\begin_inset Formula $L$
+\end_inset
+
+ denotes the end of time interval being studied).
+ Figure (2d) illustrates the case of 
+\begin_inset Formula $C-A>2\Delta\omega$
+\end_inset
+
+; thus general increase of error corresponds with phenomenon observed on
+ fig.
+ (2b).
+ Figure (2e) explores the case of 
+\begin_inset Formula $C-A<2\Delta\omega$
+\end_inset
+
+ (in log scale): here we can see three different parts — the first one correspon
+ds to the case of no breaking (such as fig.
+ (2d)), then we obtain highly unreconstructed part corresponding to fig.
+ (2c) associated with singularities and finally we get similar to fig.
+ (2d) plot explained by increase of sine frequency.
+\end_layout
+
+\begin_layout Subsection
+Autoregressive ramdom approximations
+\end_layout
+
+\begin_layout Standard
+In order to simulate the random noise for our procedure we study autoregressive
+ process (AR(1)), which can be described as:
+\begin_inset Formula 
+\[
+k_{0}(t_{n})=\alpha k_{0}(t_{n-1})+\xi_{n},
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\xi_{n}\sim\mathcal{N}(\mu,\sigma)$
+\end_inset
+
+ and 
+\begin_inset Formula $0<\alpha<1$
+\end_inset
+
+.
+ This stochastic process is widely on as weakly stationary after 
+\begin_inset Formula $n=\frac{1}{1-\alpha}$
+\end_inset
+
+ with the mean equal to 
+\begin_inset Formula $\frac{\mu}{1-\alpha}$
+\end_inset
+
+ and the standart deviation equal to 
+\begin_inset Formula $\frac{\sigma^{2}}{1-\alpha^{2}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../python/pics/v2/ar1v2.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Autoregressive approximations of 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+: an example and the probability of singularity towards 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu$
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ar"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+One realization of described process and its reconstruction are shown on
+ figure (3a); more precisely, in that case we obtain the general understanding
+ of reconstruction as smoothing highly variable approximations; furthermore
+ it can be seen that for the time interval in around 
+\begin_inset Formula $t\approx15$
+\end_inset
+
+ we get poor reconstruction quality explained by rapid change of 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+ as for too frequent sine series as in fig.
+ (2b); for the time interval in around 
+\begin_inset Formula $t\approx20$
+\end_inset
+
+ we get a correct reconstruction with flattening similar to fig.
+ (2a); the time interval for 
+\begin_inset Formula $t\approx32$
+\end_inset
+
+ illustrates the occurence of singularity with the same reasoning as for
+ piecewise-constant and sine cases.
+\end_layout
+
+\begin_layout Standard
+According to the stochasticity of the process one should assume that for
+ every set of parameters all seen for previous functions cases of reconstruction
+ are possible with some probability.
+ Thus we vary 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu$
+\end_inset
+
+ on figure (3b–c) in order to get the probability of singularity in each
+ case (the mean 
+\begin_inset Formula $\mu=2\Delta\omega+K\sigma$
+\end_inset
+
+ is varied through 
+\begin_inset Formula $K$
+\end_inset
+
+).
+ As shown on figure (3b) it can be concluded that the probability of obtainig
+ singularity through the reconstruction declines with the mean growth which
+ can be explained by the fact that with the mean growth expected values
+ of the stochastic process are more distant from 
+\begin_inset Formula $2\Delta\omega$
+\end_inset
+
+ with fixed variance; thus prolonged restricted values of the process are
+ less likely.
+ Another trend of figure (3b) is general growth of singularity probability
+ towards 
+\begin_inset Formula $\alpha$
+\end_inset
+
+; specifically, as shown in figure (3c) in 
+\begin_inset Formula $\log X\sim\log\log Y$
+\end_inset
+
+ scale, it is linear with regression coefficient equal to 1 (with non-distinctiv
+e fluctuations).
+ One should notice that whilst being linear in 
+\begin_inset Formula $\log X\sim\log\log Y$
+\end_inset
+
+ scale, given plot is not linear in simpler 
+\begin_inset Formula $X\sim\log Y$
+\end_inset
+
+ scale; it can be explained by the presense of pre-exponential functional
+ factor 
+\begin_inset Formula $f(\alpha)$
+\end_inset
+
+ that gets close to constant only in 
+\begin_inset Formula $\log X\sim\log\log Y$
+\end_inset
+
+ scale.
+\end_layout
+
+\begin_layout Subsection
+Noised sine approximation and CIs
+\end_layout
+
+\begin_layout Standard
+The last family of model functions used as 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+ approximation is the combination of simple sine approximation with random
+ additive noise decribed above; precisely
+\begin_inset Formula 
+\[
+k_{0}(t)=A\sin(Bt+\varepsilon)+C+X(t_{n}),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $X(t_{n})=\alpha X(t_{n-1})+\xi_{n}$
+\end_inset
+
+, 
+\begin_inset Formula $\xi_{n}\sim\mathcal{N}(0,\sigma)$
+\end_inset
+
+, 
+\begin_inset Formula $0<\alpha<1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../python/pics/v2/civ2.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Sine approximations of 
+\begin_inset Formula $k_{0}(t)$
+\end_inset
+
+ with additive autoregressive noise: varying 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ and 
+\begin_inset Formula $\Delta\omega$
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ci"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this scope for given problem the main question one should answer is how
+ influential the additive autoregression process is; in other words we should
+ establish the confidence interval associated with random noise for reconstructe
+d function 
+\begin_inset Formula $\hat{k}(t)$
+\end_inset
+
+; let us denote the width of the confidence interval as 
+\begin_inset Formula $e(t)$
+\end_inset
+
+.
+ For figures (4a,c) we determine 95% confidence interval for each moment
+ of time (note that there is no given knowledge about the distribution);
+ also we provide de-noised 
+\begin_inset Formula $k_{0}^{clear}(t)$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{k}^{clear}(t)$
+\end_inset
+
+ in orde to illustrate centers of confidence interval and describe overall
+ reconstruction error.
+\end_layout
+
+\begin_layout Standard
+Figures (4a–b) demonstrates the case of varying 
+\begin_inset Formula $\sigma$
+\end_inset
+
+in additive noise; for each case figure (4b) shows the corresponding plot
+ 
+\begin_inset Formula $e(t)/\left(\sigma\cdot k_{0}^{clear}(t)\right)$
+\end_inset
+
+.
+ Therefore it can be concluded that the width of confidence interval is
+ proportional to the noise's variance; in the same time plots discrepancies
+ correspond to lower phazes of the de-noised sine series where as seen on
+ fig.
+ (3b) the probability of singularity occurence is higher thus making reconstruct
+ion mostly incorrect and more variable.
+ Figures (4c–d) compiled similarly to figures (4a–b); note that in this
+ case we vary the Kuramoto inequality threshold 
+\begin_inset Formula $\Delta\omega$
+\end_inset
+
+ and since figure (4c) does not demonstrate any difference in confidence
+ intreval's widths towards the threshold, we use only 
+\begin_inset Formula $e(t)/k_{0}^{clear}(t)$
+\end_inset
+
+ for figure (4d).
+ Note that the case of 
+\begin_inset Formula $\Delta\omega=0.15$
+\end_inset
+
+, which implies not only random breaking of the main Kuramoto inequality
+ but also systematical breaking as shown on figure (4c) with yellow dashed
+ line, noticeably differs from the others; despite the fact that it is seemingly
+ more probable case for singularity occurence, the plot is lower than the
+ others which can be explained by the fact that not only we obtain singularity
+ and incorrect reconstrucions but we also obtain correct ones with flattening
+ (as discussed earlier) to 
+\begin_inset Formula $2\Delta\omega$
+\end_inset
+
+ thus making reconstructed function less variable resulting in more narrow
+ confidence interval.
+\end_layout
+
+\end_body
+\end_document
